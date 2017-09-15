@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"github.com/boltdb/bolt"
-
 	"gopkg.in/telegram-bot-api.v4"
 )
 
@@ -33,7 +32,6 @@ func main() {
 	if *token == "" {
 		log.Fatal("Set bot token with flag -t=Your:Token")
 	}
-
 	// bot
 	bot, err := tgbotapi.NewBotAPI(*token)
 	if err != nil {
@@ -57,9 +55,16 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
-	t, _ := template.ParseFiles("index.html") //setp 1
-	t.Execute(w, "Hello World!")              //step 2
+	msgs := msgs(100)
+	fmap := template.FuncMap{
+		"formatText":   formatText,
+		"formatAsDate": formatAsDate,
+	}
+	t := template.Must(template.New("index.html").Funcs(fmap).ParseFiles("index.html"))
+	err := t.Execute(w, msgs)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func updates(bot *tgbotapi.BotAPI) {
@@ -168,4 +173,27 @@ func getRecs(bucket []byte, from []byte, cnt int) ([][]byte, [][]byte) {
 		return nil
 	})
 	return keys, vals
+}
+
+func msgs(cnt int) []tgbotapi.Message {
+	msgs := make([]tgbotapi.Message, 0, cnt)
+	_, vals := getRecs([]byte("post"), nil, cnt)
+	for _, val := range vals {
+		var msg tgbotapi.Message
+		err := json.Unmarshal(val, &msg)
+		if err == nil {
+			msgs = append(msgs, msg)
+		}
+	}
+	return msgs
+}
+
+func formatAsDate(t int) string {
+	tm := time.Unix(int64(t), 0)
+	year, month, day := tm.Date()
+	return fmt.Sprintf("%d.%d.%d", day, month, year)
+}
+
+func formatText(s string) template.HTML {
+	return template.HTML(strings.Replace(s, "\n", "<br/>", -1))
 }

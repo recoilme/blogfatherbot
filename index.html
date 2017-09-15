@@ -52,7 +52,6 @@
           display: inline-block;
           font-size: 1rem;
           font-weight: 500;
-          
           margin: 0;
         }
         
@@ -71,13 +70,22 @@
           margin: 1rem auto;
           text-overflow: clip;
           width: 100%;
+          text-align: left;
         }
+
+        
         article, aside, footer, header, nav, section {
           display: block;
         }
 
         .post-body {
           padding: 1rem;
+        }
+
+        .post-timestamp {
+          color: #666;
+          font-size: .875rem;
+          text-decoration: none;
         }
         </style>
     </head>
@@ -88,11 +96,19 @@
            </h1>
        </header>
        <section class="posts">
+        {{range .}}
+        {{if .Text}}
         <article class="post">
-            <div class="post-body">
-              {{ . }}
+          <div class="post-body">
+            <div class="post-timestamp">
+                {{.Date | formatAsDate}}
             </div>
+            {{.Text | formatText}}
+          </div>
         </article>
+        {{end}}
+        {{end}}
+
       </section>
        
     </body>
