@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+        <style>
+        html {
+          color: #000;
+          font-size: 1em;
+          line-height: 1.4;
+          background-color: #EEEEEE;
+        }
+        header {
+          padding: 1rem 0;
+          display: block;
+          background-color: rgba(255,255,255,.95);
+          top: 0;
+          left: 0;
+          text-align: center;
+          -webkit-transition: all .3s;
+          -moz-transition: all .3s;
+          transition: all .3s;
+          width: 100%;
+          z-index: 100;
+        }
+
+        header a {
+          text-decoration: none;
+          -webkit-transition: color .1s linear;
+          -moz-transition: color .1s linear;
+          transition: color .1s linear;
+          color: #000;
+        }
+
+        header h1 a {
+	        background-color: transparent;
+        }
+
+        a {
+          color: #666666;
+        }
+
+        header h1 {
+          display: inline-block;
+          font-size: 1rem;
+          font-weight: 500;
+          
+          margin: 0;
+        }
+        
+        article {
+	        max-width: 500px;
+        }
+
+        .posts {
+          text-align: center;
+        }
+
+
+        .post {
+          background-color: #fff;
+          border-radius: 3px;
+          margin: 1rem auto;
+          text-overflow: clip;
+          width: 100%;
+        }
+        article, aside, footer, header, nav, section {
+          display: block;
+        }
+
+        .post-body {
+          padding: 1rem;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+           <h1>
+               <a href="/">My Blog</a>
+           </h1>
+       </header>
+       <section class="posts">
+        <article class="post">
+            <div class="post-body">
+              {{ . }}
+            </div>
+        </article>
+      </section>
+       
+    </body>
+</html>

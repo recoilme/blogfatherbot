@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -56,7 +57,9 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+	//fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+	t, _ := template.ParseFiles("index.html") //setp 1
+	t.Execute(w, "Hello World!")              //step 2
 }
 
 func updates(bot *tgbotapi.BotAPI) {
