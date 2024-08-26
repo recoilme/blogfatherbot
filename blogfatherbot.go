@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/boltdb/bolt"
-	"gopkg.in/telegram-bot-api.v4"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 var (
@@ -26,7 +26,7 @@ func main() {
 	tokenByte, _ := ioutil.ReadFile("./token")
 	tokenStr := strings.Replace(string(tokenByte), "\n", "", -1)
 	token := flag.String("t", tokenStr, "Set bot token what botfather give you")
-	port := flag.String("p", ":8080", "Set port and address to listen, example -p=:80")
+	port := flag.String("p", ":8881", "Set port and address to listen, example -p=:80")
 	debugBot := flag.Bool("d", false, "Set debug bot with flag -d=true")
 	flag.Parse()
 	if *token == "" {
@@ -71,10 +71,8 @@ func updates(bot *tgbotapi.BotAPI) {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
 
-	updates, err := bot.GetUpdatesChan(u)
-	if err != nil {
-		fmt.Println(err)
-	}
+	updates := bot.GetUpdatesChan(u)
+
 	for update := range updates {
 		if update.Message == nil {
 			continue
