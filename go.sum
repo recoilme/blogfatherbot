@@ -1,3 +1,5 @@
+github.com/PaulSonOfLars/gotg_md2html v0.0.0-20240605215313-a6fdd2445f54 h1:zkXZYemy5g4pLYVqGO8KFSkASsLH0coWWCwIzXMuXU8=
+github.com/PaulSonOfLars/gotg_md2html v0.0.0-20240605215313-a6fdd2445f54/go.mod h1:1xBfukLsM8dyQska4tSfxWmbRWhYGBzTjLLy8vRG4wc=
 github.com/boltdb/bolt v1.3.1 h1:JQmyP4ZBrce+ZQu0dY660FMfatumYDLun9hBCUVIkF4=
 github.com/boltdb/bolt v1.3.1/go.mod h1:clJnj/oiGkjum5o1McbSZDSLxVThjynRyGBgiAx27Ps=
 github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible h1:2cauKuaELYAEARXRkq2LrJ0yDDv1rW7+wrTEdVL3uaU=

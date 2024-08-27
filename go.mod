@@ -9,6 +9,7 @@ require (
 )
 
 require (
+	github.com/PaulSonOfLars/gotg_md2html v0.0.0-20240605215313-a6fdd2445f54 // indirect
 	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible // indirect
 	github.com/parakeet-nest/parakeet v0.1.4 // indirect
 	github.com/technoweenie/multipartstreamer v1.0.1 // indirect

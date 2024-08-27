@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"testing"
 
-	"gopkg.in/telegram-bot-api.v4"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 func TestDb(t *testing.T) {
@@ -58,4 +58,12 @@ func TestPrintLast(t *testing.T) {
 			fmt.Printf("val:%+v\n", msg)
 		}
 	}
+}
+
+func TestNonCyrillic(t *testing.T) {
+	s := `111
+		нарисуй draw:{cow jy, blodd 111 }aasыыs
+	 ww олень`
+	r := nonCyrillic(s)
+	fmt.Println(r)
 }
