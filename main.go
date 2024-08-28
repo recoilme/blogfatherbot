@@ -176,8 +176,8 @@ func dialog(conversations []llm.Message, temperature float64) (string, error) {
 	//https://github.com/ollama/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values
 	options := llm.Options{
 		Temperature:   temperature, //0.8
-		RepeatLastN:   4,           //64
-		RepeatPenalty: 2.1,         //1.1
+		RepeatLastN:   64,          //64
+		RepeatPenalty: 3.1,         //1.1
 		NumPredict:    -2,          //128
 		TopK:          100,         //40
 		TopP:          0.95,        //0.9
